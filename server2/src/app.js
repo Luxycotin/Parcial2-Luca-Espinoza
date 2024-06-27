@@ -16,8 +16,6 @@ app.get("/products/:id", (req, res) => {
   const getproduct = db.find((producto) => producto.id === id);
   if (getproduct) {
     res.json(getproduct);
-  } else {
-    res.status(404).json({ message: "Producto no encontrado" });
   }
 });
 
@@ -44,8 +42,6 @@ app.put("/products/:id", (req, res) => {
     db[productIndex].quality = quality;
     db[productIndex].price = price;
     res.json({ message: "Producto actualizado correctamente", updatedProduct: db[productIndex] });
-  } else {
-    res.status(404).json({ message: "Producto no encontrado" });
   }
 });
 
@@ -56,8 +52,6 @@ app.delete("/products/:id", (req, res) => {
   if (productIndex !== -1) {
     const deletedProduct = db.splice(productIndex, 1);
     res.json({ message: "Producto eliminado correctamente", deletedProduct });
-  } else {
-    res.status(404).json({ message: "Producto no encontrado" });
   }
 });
 
